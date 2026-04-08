@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import WeatherDashboard from "./weatherdashboard";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 import "leaflet/dist/leaflet.css";
@@ -207,14 +208,13 @@ function App() {
 
         {/* Right Panel */}
         <div className="panel chart-panel">
-          <h3>Rainfall Trend (mm)</h3>
-          <LineChart width={500} height={300} data={rainfallData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="rain" stroke="#1890ff" animationDuration={1200} />
-          </LineChart>
+           <div className="full-height">
+    <WeatherDashboard 
+    lat={selectedArea?.lat} 
+  lon={selectedArea?.lon}
+  name={selectedArea?.name}
+    />
+  </div>
         </div>
       </div>
     </div>

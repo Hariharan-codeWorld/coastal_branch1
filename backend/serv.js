@@ -49,7 +49,40 @@ app.get("/risk", async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 });
+const API_KEY = process.env.WEATHER_API_KEY;
 
+// Route to get weather
+app.get("/weather", async (req, res) => {
+  const { lat, lon } = req.query;
+
+  try {
+    const response = await axios.get(
+      "https://api.openweathermap.org/data/2.5/weather",
+      {
+        params: {
+          lat: lat,
+          lon: lon,
+          appid: process.env.WEATHER_API_KEY,
+          units: "metric",
+        },
+      }
+    );
+
+    res.json({
+      city: response.data.name,
+      temp: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.weather[0].description,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Weather fetch failed" });
+  }
+});
+
+app.listen(process.env.PORT, () =>
+  console.log(`Server running on port ${process.env.PORT}`)
+);
 // 🔹 CORE LOGIC
 async function fetchRisk(area) {
     console.log("🌊 Fetching weather for", area.name);
