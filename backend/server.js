@@ -4,6 +4,7 @@ const cors = require("cors");
 const cron = require("node-cron");
 const nodemailer = require("nodemailer");
 const twilio = require("twilio");
+require('dotenv').config();
 
 require("./db");
 const Area = require("./models/Area");
@@ -15,7 +16,8 @@ app.use(cors());
 let latestRisk = "Unknown";
 let lastAlertTime = 0;
 
-
+// 🔹 Twilio
+const smsClient = new twilio(process.env.twillio_sec1, process.env.twillio_sec2);
 
 // 🔹 Email
 async function sendEmail(risk) {
@@ -24,7 +26,7 @@ async function sendEmail(risk) {
             service: "gmail",
             auth: {
                 user: "hariharanm012006@gmail.com",
-                pass: 
+                pass: "xtpgoosvkuhtywkb"
             }
         });
 

@@ -17,7 +17,11 @@ app.use(cors());
 let latestRisk = "Unknown";
 let lastAlertTime = 0;
 
-
+// 🔹 Twilio
+const smsClient = new twilio(
+    process.env.twillio_sec1,
+    process.env.twillio_sec2
+);
 
 // 🔹 GET areas
 app.get("/areas", async (req, res) => {
