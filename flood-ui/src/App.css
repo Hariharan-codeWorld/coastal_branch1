@@ -6,7 +6,11 @@ body, html, #root {
   padding: 0;
   font-family: 'Manrope', sans-serif;
   height: 100%;
-  background: linear-gradient(135deg, #f0f2f5, #d9e2ec); /* soft neutral gradient */
+  /* background: linear-gradient(135deg, #f0f2f5, #d9e2ec); soft neutral gradient */
+background: rgba(255, 255, 255, 0.6);
+backdrop-filter: blur(12px);
+border-radius: 16px;
+box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   color: #1f2937; /* dark gray text for readability */
   overflow-x: hidden;
 }
@@ -35,7 +39,9 @@ header h1 {
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.25); /* glass panel */
+  /* background: rgba(255, 255, 255, 0.25); glass panel */
+  background: linear-gradient(135deg, #dbeafe, #e0f7fa, #f0f9ff);
+
   backdrop-filter: blur(12px);
   border-radius: 20px;
   /* padding: 20px; */
@@ -151,7 +157,7 @@ select {
   padding:0px;
   flex-direction: column;
   background: linear-gradient(135deg, #dbeafe, #e0f7fa, #f0f9ff);
-  
+  width:400px;
   align-items: center;
 }
 

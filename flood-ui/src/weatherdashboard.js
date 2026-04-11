@@ -66,7 +66,7 @@ const WeatherDashboard = ({ lat, lon,name }) => {
           {/* Bottom Chart */}
           <div className="weather-chart">
             <p>Rainfall Trend</p>
-            <ResponsiveContainer width="100%" height={120}>
+            <ResponsiveContainer width="110%" height={120}>
              <LineChart 
   data={rainData}
   margin={{ top: 10, right: 20, left: 20, bottom: 0 }}  // 🔥 add this
